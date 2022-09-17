@@ -1,6 +1,6 @@
 import { Button, Form, notification } from "antd";
 import React, { useState, useContext } from "react";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.min.css';
 import "./Login.css";
 import { login } from "../service/auth";
 import { Formik, Field } from "formik";
@@ -28,7 +28,7 @@ const layout = {
   wrapperCol: { span: 100 },
 };
 
-const Login: React.FC = () => {
+const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const globalContext = useContext(GlobalContext)

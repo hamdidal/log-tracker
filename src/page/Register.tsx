@@ -1,6 +1,5 @@
 import { Button, Form, notification } from "antd";
 import React, { useEffect, useState } from "react";
-import "antd/dist/antd.css";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { register } from "../service/register";

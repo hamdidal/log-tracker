@@ -1,4 +1,5 @@
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserModel } from "../model/User";
 
 export const GlobalContext = React.createContext({
@@ -16,6 +17,18 @@ interface GlobalContextModel {
 }
 const GlobalContextProvider = (props: Props) => {
   const [user, setUser] = useState<UserModel | undefined>(undefined);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (user == null) {
+      navigate('/login')
+    } else if (location.pathname === 'login') {
+      navigate('/')
+    }
+  }, [location.pathname, navigate, user])
+  
 
   const data: GlobalContextModel = {
     user,

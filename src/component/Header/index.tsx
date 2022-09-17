@@ -3,8 +3,7 @@ import { LogoutOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import { PageHeader } from "antd";
 import "./Header.css";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import React from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
@@ -37,10 +36,10 @@ function Header() {
         <PlusCircleOutlined 
         onClick={navigateModalPage}/>
           {" "}
-          <a href="/Projects" className="p1">
+          <Link to="/Projects" className="p1">
             {" "}
             Projects{" "}
-          </a>
+          </Link>
         </div>
       </PageHeader>
     </div>

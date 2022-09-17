@@ -3,7 +3,6 @@ import Login from "./page/Login";
 import "./firebase";
 import { Route, Routes } from "react-router-dom";
 import Register from "./page/Register";
-import Auth from "./component/auth";
 import ProjectPage from "./page/ProjectPage";
 import { Home } from "./page/Home";
 import GlobalContextProvider from "./context";
@@ -14,14 +13,7 @@ function App() {
     <div className="App">
       <GlobalContextProvider>
         <Routes>
-          <Route
-            path="/login"
-            element={
-              <Auth>
-                <Login />
-              </Auth>
-            }
-          />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectPage />} />
           <Route path="/register" element={<Register />} />

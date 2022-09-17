@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Input } from "antd";
 import { PlusCircleFilled } from "@ant-design/icons";
 import "../page/ProjectPage.css";
@@ -11,7 +11,7 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import { GlobalContext } from "../context";
+import { UserModel } from "../model/User";
 
 interface ProjectModel {
   submit: string | number | readonly string[] | undefined;
@@ -21,22 +21,24 @@ interface ProjectModel {
   completed: boolean;
 }
 
-function ProjectList() {
+interface Props {
+  user: UserModel;
+}
+
+function ProjectList(props: Props) {
   const [projects, setProjects] = useState<ProjectModel[]>([]);
   const [project, setProject] = useState("");
   const [projectEditing, setProjectEditing] = useState<string | null>(null);
   const [editingText, setEditingText] = useState("");
   const [projectListUpdated, setProjectListUpdated] = useState(false);
 
-  const globalContext = useContext(GlobalContext);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("bbbbbbbb ", globalContext);
     const ref = collection(db, "logTracker");
     addDoc(ref, {
       name: project,
-      userId: globalContext.user?.userId,
+      userId: props.user.userId,
     });
     setProjectListUpdated(!projectListUpdated);
     setProject("");
