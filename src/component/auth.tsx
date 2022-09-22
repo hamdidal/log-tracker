@@ -7,20 +7,20 @@ interface AuthProps {
   children: ReactNode;
 }
 const Auth: FC<AuthProps> = ({ children }) => {
-  const globalContext = useContext(GlobalContext)
+  const {user, setUser} = useContext(GlobalContext)
   const navigate = useNavigate();
+  
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if ( user === null) {
+    onAuthStateChanged(auth, (authUser) => {
+      if ( authUser === null) {
         navigate("/login");
       } else {
-        globalContext.setUser({ userName:user.displayName ?? "", userId:user.uid ?? ""})
-        console.log(globalContext.user)
+        setUser({ userName:authUser.displayName ?? "", userId:authUser.uid ?? ""})
         navigate("/");
       }
     });
-  }, [globalContext, navigate]);
+  }, [user, setUser]);
   return <Fragment>{children}</Fragment>;
 };
 

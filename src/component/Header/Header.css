@@ -13,6 +13,7 @@
     font-size: 32px;
     position: fixed;
     left: 50%;
+    top: 30px;
 }
 .p1{
     font-size: 32px;
@@ -39,5 +40,7 @@
     overflow-y: scroll;
     scrollbar-color: rebeccapurple green;
     scrollbar-width: thin;
-
+}
+.logout{
+    top: 50px;
 }

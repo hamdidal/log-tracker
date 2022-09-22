@@ -1,12 +1,13 @@
 import { Button, Form, notification } from "antd";
 import React, { useState, useContext } from "react";
-import 'antd/dist/antd.min.css';
+import "antd/dist/antd.min.css";
 import "./Login.css";
 import { login } from "../service/auth";
 import { Formik, Field } from "formik";
 import * as YUP from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const initialValues = {
   email: "",
@@ -31,17 +32,21 @@ const layout = {
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const globalContext = useContext(GlobalContext)
+
+  const toRegisterPage = () => {
+    navigate("/register");
+  };
+
+  const globalContext = useContext(GlobalContext);
 
   const onPressLogin = async (values: any) => {
     setLoading(true);
     try {
-      const res = await login(values.email , values.password);
+      const res = await login(values.email, values.password);
       globalContext.setUser({
-        userId:res.user.uid, 
-        userName:res.user.email || undefined
-      })
-      console.log("afterlogin", globalContext.user)
+        userId: res.user.uid,
+        userName: res.user.email || undefined,
+      });
       navigate("/");
     } catch (e) {
       notification.open({
@@ -101,7 +106,7 @@ const Login = () => {
             >
               Login
             </Button>
-            or <a href="/register">register now!</a>
+            <p style={{cursor:"pointer"}} onClick={toRegisterPage}> or Register now!</p>
           </Form.Item>
         </Form>
       )}

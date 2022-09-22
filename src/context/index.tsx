@@ -22,17 +22,21 @@ const GlobalContextProvider = (props: Props) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (user == null) {
-      navigate('/login')
-    } else if (location.pathname === 'login') {
-      navigate('/')
+    if(!location.pathname.includes("register") ) {
+      if (user == null) {
+        navigate('/login')
+      } else if (location.pathname === 'login') {
+        navigate('/')
+      }
     }
+   
   }, [location.pathname, navigate, user])
   
 
   const data: GlobalContextModel = {
     user,
     setUser,
+
   };
   return (
     <GlobalContext.Provider value={data}>

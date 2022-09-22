@@ -5,12 +5,13 @@ import "./Header.css";
 import { getAuth, signOut } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function Header() {
   const navigate = useNavigate();
 
   const navigateModalPage = () => {
-    navigate("/modal")
-  }
+    navigate("/adddiary");
+  };
 
   const onPressLogOut = async () => {
     try {
@@ -21,21 +22,22 @@ function Header() {
   };
 
   return (
-    <div>
+    <div className="header-div">
       <PageHeader
         className="site-page-header-ghost-wrapper"
         extra={[
-            <><p className="p">Dashboard </p><LogoutOutlined
-            onClick={onPressLogOut}
-            rotate={270}
-            style={{ fontSize: "32px" }}
-          ></LogoutOutlined></>
+          <>
+            <p className="p">Dashboard </p>
+            <LogoutOutlined
+              onClick={onPressLogOut}
+              rotate={270}
+              style={{ fontSize: "32px", marginTop: "10px" }}
+            ></LogoutOutlined>
+          </>,
         ]}
       >
         <div className="top-bar">
-        <PlusCircleOutlined 
-        onClick={navigateModalPage}/>
-          {" "}
+          <PlusCircleOutlined onClick={navigateModalPage} />{" "}
           <Link to="/Projects" className="p1">
             {" "}
             Projects{" "}
