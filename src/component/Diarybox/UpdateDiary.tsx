@@ -3,15 +3,15 @@ import { Select, Button, TimePicker } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { GlobalContext } from '../../context'
-import { createLog } from '../../service/log'
+import { getLog, updateLog } from '../../service/log'
 import { getProjectsForUserId } from '../../service/project'
 import './DiaryBox.css'
 import { ProjectModel } from '../../model/Project'
-import { CreateLogModel } from '../../model/Log'
+import { UpdateLogModel } from '../../model/Log'
 
-export const DiaryBox = () => {
+export const UpdateDiary = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
   const [description, setDescription] = useState('')
   const [difference, setDifference] = useState('')
@@ -21,30 +21,48 @@ export const DiaryBox = () => {
   const globalContext = useContext(GlobalContext)
   const [loading, setLoading] = useState(false)
 
+  const { id } = useParams()
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const newLog: CreateLogModel = {
+    const logUpdate: UpdateLogModel = {
       description: description,
       difference: difference,
       start: start,
       end: end,
       userId: globalContext.user?.userId!,
       projectId: projectId,
+      id: id!,
     }
-    await createLog(newLog)
+    await updateLog(id!, logUpdate)
     setDescription('')
     setDifference('')
     navigate('/')
   }
 
   useEffect(() => {
-    const getData = async () => {
+    const getProject = async () => {
       return await getProjectsForUserId(globalContext.user?.userId!)
     }
     setLoading(true)
-    getData().then((data) => setProjects(data))
+    getProject().then((data) => setProjects(data))
     setLoading(false)
   }, [globalContext.user?.userId])
+
+  useEffect(() => {
+    const getLogs = async () => {
+      return await getLog(id!)
+    }
+    setLoading(true)
+    getLogs().then((data) => {
+      setDescription(data.description)
+      setDifference(data.difference)
+      setEnd(data.end)
+      setProjectId(data.projectId)
+      setStart(data.start)
+    })
+    setLoading(false)
+  }, [])
 
   const { Option } = Select
 
@@ -57,8 +75,8 @@ export const DiaryBox = () => {
     const diffMins = Math.floor(((diff % 86400000) % 3600000) / 60000)
     setDifference(`${diffHrs}:${diffMins}`)
 
-    setStart(startDate.toLocaleString())
-    setEnd(endDate.toLocaleString())
+    setStart(start)
+    setEnd(end)
   }
 
   const handleChange = (value: string) => {
@@ -70,10 +88,9 @@ export const DiaryBox = () => {
   const toCancel = () => {
     navigate('/')
   }
-
   return (
     <form onSubmit={handleSubmit} className="form-diary">
-      <h2 className="title-form-diary">Add Diary</h2>
+      <h2 className="title-form-diary">Update Diary</h2>
       <h3 className="title-form">Project Name</h3>
       <Select onChange={handleChange} placeholder="Select your project" className="select-modal">
         {projects.map((doc) => (
@@ -84,13 +101,7 @@ export const DiaryBox = () => {
       </Select>
       <div className="description-diary">
         <h3 className="title-form">Description</h3>
-        <TextArea
-          className="description-input"
-          placeholder="Please say something"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          maxLength={500}
-        />
+        <TextArea className="description-input" placeholder="" onChange={(e) => setDescription(e.target.value)} value={description} maxLength={500} />
       </div>
       <div className="description-diary">
         <h3 className="title-form">Start Time</h3>
@@ -100,7 +111,7 @@ export const DiaryBox = () => {
       <Button className="description-button" disabled={description.length < 1 && difference.length < 1} type="primary" htmlType="submit">
         <PlusCircleFilled />
       </Button>
-      <Button className="cancel-button" disabled={description.length > 1} type="primary" onClick={toCancel}>
+      <Button className="cancel-button" type="primary" onClick={toCancel}>
         <CloseCircleFilled />
       </Button>
     </form>

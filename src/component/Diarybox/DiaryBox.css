@@ -1,20 +1,32 @@
-.form-modal{
+.form-diary{
     height: 706px; 
     width: 563px; 
     position: fixed;
     left: 35%;
     top: 10%;
     background-color: rgb(240, 235, 235);
-    border-radius: 6px;
-    border: 1px solid;
+    box-shadow: 0px 0px 41px -7px rgba(0,0,0,0.75);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.title-form-diary{
+    height: 6vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(255, 186, 186);
+    margin-bottom: 10vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .select-modal{
     width: 200px;
     background-color: black;
     color: black;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
-.description-modal{
+.description-diary{
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -26,24 +38,40 @@
     width: 70%;
     background-color: rgba(245, 222, 179, 0.308);
     height: 100px;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 .description-input:focus{
     background-color: white;
 }
 .description-button{
+    font-size: 18px;
+    width: 3vw;
+    height: 3.5vh;
     align-items: center;
     margin-top: 20%;
     justify-content: center;
     flex-direction: column;
-    border-radius: 20%;
+    border-radius: 4px;
     margin: 10%;
 }
 .cancel-button{
+    font-size: 18px;
+    width: 3vw;
+    height: 3.5vh;
     align-items: center;
     margin-top: 20%;
     justify-content: center;
     flex-direction: column;
-    border-radius: 20%;
+    border-radius: 4px;
     margin: 10%;
+}
+.title-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(209, 209, 209);
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 5vh;
+    border-radius: 4px;
 }

@@ -1,0 +1,7 @@
+.add-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    margin: 60px;
+}

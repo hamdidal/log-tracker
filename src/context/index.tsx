@@ -15,7 +15,7 @@ interface GlobalContextModel {
   user: UserModel | undefined;
   setUser: Dispatch<SetStateAction<UserModel | undefined>>;
 }
-const GlobalContextProvider = (props: Props) => {
+export const GlobalContextProvider = (props: Props) => {
   const [user, setUser] = useState<UserModel | undefined>(undefined);
 
   const navigate = useNavigate();
@@ -29,10 +29,8 @@ const GlobalContextProvider = (props: Props) => {
         navigate('/')
       }
     }
-   
   }, [location.pathname, navigate, user])
   
-
   const data: GlobalContextModel = {
     user,
     setUser,
@@ -45,4 +43,3 @@ const GlobalContextProvider = (props: Props) => {
   );
 };
 
-export default GlobalContextProvider;

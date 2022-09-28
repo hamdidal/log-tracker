@@ -1,6 +1,19 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import { CreateProjectModel, ProjectModel, UpdateProjectModel } from '../model/Project'
+
+
+export const getProject = async (id:string):Promise<ProjectModel> => {
+  const ref = doc(db, "projects", id )
+  const project = await getDoc(ref)
+  const data = project.data()
+  const res:ProjectModel = {
+    name: data!.name,
+    userId: data!.userId,
+    id: id
+  }
+  return res
+}
 
 export const getProjectsForUserId = async (userId: string) => {
   const q = query(collection(db, 'projects'), where('userId', '==', userId))
@@ -13,7 +26,6 @@ export const getProjectsForUserId = async (userId: string) => {
       id: doc.id,
       name: docData.name,
       userId: docData.userId,
-      submit: docData.string,
     }
     res.push(data)
   })
@@ -31,6 +43,7 @@ export const deleteProject = async (id: string) => {
 }
 export const updateProject = async (id: string, project: UpdateProjectModel) => {
   const ref = doc(db, 'projects', id)
-  const editedProject = await updateDoc(ref, id, project)
+  const editedProject = await updateDoc(ref, { ...project })
   return editedProject
 }
+

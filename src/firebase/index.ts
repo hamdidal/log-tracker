@@ -1,19 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBDxFjaDCyqgxQFReF2Q_1ohqPI7zRcimc",
-  authDomain: "l0g-tracker-e1616.firebaseapp.com",
-  databaseURL: "https://l0g-tracker-e1616-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "l0g-tracker-e1616",
-  storageBucket: "l0g-tracker-e1616.appspot.com",
-  messagingSenderId: "54238228783",
-  appId: "1:54238228783:web:0b56bdbba5e2fd7392b1da"
+  apiKey: "AIzaSyDLZAbQo0N0NxVHv6WRvkYIT5u1Q9owNQM",
+  authDomain: "log-tracker-yedek-6c905.firebaseapp.com",
+  projectId: "log-tracker-yedek-6c905",
+  storageBucket: "log-tracker-yedek-6c905.appspot.com",
+  messagingSenderId: "901421223261",
+  appId: "1:901421223261:web:a1ff04df75b287251b2cb4"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 

@@ -1,7 +1,7 @@
 import { FC, Fragment, ReactNode, useEffect, useContext } from "react";
 import {  useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 
 interface AuthProps {
   children: ReactNode;

@@ -6,7 +6,7 @@
 .p{
     font-size: 32px;
     position: fixed;
-    left: 10px;
+    left: 8%;
     top: 30px;
 }
 .plus{
@@ -34,13 +34,8 @@
     align-items: center;
     flex-direction: column;
 }
-.project-list{
-    width: 300px;
-    height: 100px;
-    overflow-y: scroll;
-    scrollbar-color: rebeccapurple green;
-    scrollbar-width: thin;
-}
-.logout{
-    top: 50px;
+.logOut-btn{
+    font-size: 32px;
+    position: fixed;
+    left: 88%;
 }

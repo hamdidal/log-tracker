@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { HomeOutlined } from "@ant-design/icons";
 import { PageHeader } from "antd";
 import React from "react";
 import "./ProjectHeader.css";
@@ -23,10 +23,10 @@ function ProjectHeader() {
       <PageHeader
         className="site-page-header-ghost-wrapper"
         extra={[
-            <ArrowLeftOutlined
-            className="out-arrow"
+            <HomeOutlined
+            className="out-home"
             onClick={onPressLogOut}
-            ></ArrowLeftOutlined>
+            ></HomeOutlined>
         ]}
       >
          <p className="paragraph">Projects </p>

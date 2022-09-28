@@ -27,11 +27,11 @@ function Header() {
         className="site-page-header-ghost-wrapper"
         extra={[
           <>
-            <p className="p">Dashboard </p>
+            <p className="p">Log Diary </p>
             <LogoutOutlined
               onClick={onPressLogOut}
               rotate={270}
-              style={{ fontSize: "32px", marginTop: "10px" }}
+              className="logOut-btn"
             ></LogoutOutlined>
           </>,
         ]}

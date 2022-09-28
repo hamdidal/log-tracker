@@ -1,7 +1,6 @@
 export interface ProjectModel {
-  submit: string 
   name: string
-  userId: string | undefined
+  userId: string
   id: string
 }
 export interface CreateProjectModel {
@@ -14,5 +13,4 @@ export interface DeleteProjectModel {
 }
 export interface UpdateProjectModel {
   name: string
-  userId: string
 }
