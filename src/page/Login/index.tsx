@@ -1,13 +1,12 @@
-import { Button, Form, notification } from 'antd'
+import { Button, Form, Input, notification } from 'antd'
 import React, { useState, useContext } from 'react'
 import 'antd/dist/antd.min.css'
 import './Login.css'
 import { login } from '../../service/auth'
-import { Formik, Field } from 'formik'
+import { Formik } from 'formik'
 import * as YUP from 'yup'
 import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../context'
-import Loading from '../../component/Loading'
 
 const initialValues = {
   email: '',
@@ -60,41 +59,34 @@ const Login = () => {
   }
   return (
     <Formik initialValues={initialValues} onSubmit={onPressLogin} validationSchema={validationSchema} validateOnChange={true}>
-      {({ errors, touched, handleChange, handleSubmit }) => (
+      {({ errors, touched, handleChange, handleSubmit, handleBlur }) => (
         <Form className="loginform" {...layout}>
-          {loading && <Loading />}
-          <Form.Item label="Email" name="email">
-            <Field
-              className="email"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              errors="lütfen mail adresinizi"
-            />
+          <div className="titles-top">Log Tracker</div>
+          <div className="titles-top">Login</div>
+          {/* {loading && <Loading />} */}
+          <Form.Item validateStatus={errors.email && touched.email ? 'error' : 'success'}>
+            <Input className="email" type="email" name="email" placeholder="Email Address" onChange={handleChange} onBlur={handleBlur} />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </Form.Item>
-          <Form.Item label="Password" name="password">
-            <Field
+          <Form.Item validateStatus={errors.password && touched.password ? 'error' : 'success'}>
+            <Input
               className="password"
               autoComplete="new-password"
               type="password"
               name="password"
-              id="password"
               placeholder="Enter Password"
               onChange={handleChange}
+              onBlur={handleBlur}
             />
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
           </Form.Item>
-          <Form.Item {...layout} name="remember" valuePropName="checked"></Form.Item>
           <Form.Item className="button">
-            <Button disabled={loading} color="primary" block onClick={() => handleSubmit()}>
+            <Button color="primary" block onClick={() => handleSubmit()}>
               Login
             </Button>
-            <p style={{ cursor: 'pointer' }} onClick={toRegisterPage}>
-              {' '}
-              or Register now!
-            </p>
+            <div className="register" onClick={toRegisterPage}>
+              Don't have an account? Request now!
+            </div>
           </Form.Item>
         </Form>
       )}

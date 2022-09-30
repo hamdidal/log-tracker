@@ -8,6 +8,7 @@
     background-color: antiquewhite;
     border-radius: 4px;
 }
+
 .titles{
     display: flex;
     justify-content: space-around;
@@ -24,6 +25,7 @@
     color: white;
     margin-bottom: 10px;
 }
+
 .title{
     display: flex;
     justify-content: center;
@@ -31,6 +33,7 @@
     width: 16vw;
     height: 100%;
 }
+
 .headlines{
     display: flex;
     justify-content: space-around;
@@ -38,6 +41,7 @@
     align-items: center;
     margin-top: -10px;
 }
+
 .log-table{
     display: flex;
     justify-content: center;
@@ -48,6 +52,7 @@
     text-transform: uppercase;
     width: 80vw;
 }
+
 .table-data{
     width: 16vw;
     display: flex;

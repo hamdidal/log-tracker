@@ -1,8 +1,8 @@
 import { Button, Form, notification } from 'antd'
 import React, { useState } from 'react'
-import '../Login/Login.css'
+import './Register.css'
 import { useNavigate } from 'react-router-dom'
-import { register } from '../../service/register'
+import { register } from '../../service/auth'
 import { Formik, Field } from 'formik'
 import * as YUP from 'yup'
 import Loading from '../../component/Loading'
@@ -32,7 +32,11 @@ const Register: React.FC = () => {
 
   const navigate = useNavigate()
 
-  const onPressRegister = async (values:any) => {
+  const toLoginPage = () => {
+    navigate('/login')
+  }
+
+  const onPressRegister = async (values: any) => {
     setLoading(true)
     try {
       await register(values.email, values.password)
@@ -49,38 +53,34 @@ const Register: React.FC = () => {
   }
   return (
     <Formik initialValues={initialValues} onSubmit={onPressRegister} validationSchema={validationSchema} validateOnMount={true}>
-      {({ errors, touched, handleChange, handleSubmit }) => (
-        <Form className="loginform" {...layout}>
+      {({ errors, touched, handleChange, handleSubmit, handleBlur }) => (
+        <Form className="loginform-reg" {...layout}>
+          <div>Register Form</div>
           {loading && <Loading />}
-          <Form.Item label="Email" name="email">
-            <Field
-              className="email"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              errors="lütfen bir mail adresi giriniz"
-            />
+          <Form.Item validateStatus={errors.email && touched.email ? 'error' : 'success'}>
+            <Field className="email-reg" type="email" name="email" placeholder="Enter Email Address" onChange={handleChange} onBlur={handleBlur} />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </Form.Item>
-          <Form.Item label="Password" name="password">
+          <Form.Item validateStatus={errors.password && touched.password ? 'error' : 'success'}>
             <Field
-              className="email"
+              className="password-reg"
               autoComplete="new-password"
               type="password"
               name="password"
-              id="password"
               placeholder="Enter Password"
               onChange={handleChange}
+              onBlur={handleBlur}
             />
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
           </Form.Item>
-          <Form.Item {...layout} name="remember" valuePropName="checked"></Form.Item>
-          <Form.Item className="btn">
-            <Button disabled={loading} color="primary" block onClick={() => handleSubmit()}>
+          <Form.Item className="btn-form-reg">
+            <Button className="btn-reg" color="primary" block onClick={() => handleSubmit()}>
               Sign In
             </Button>
           </Form.Item>
+          <div className="back-log" onClick={toLoginPage}>
+            If you have an account, please Login!
+          </div>
         </Form>
       )}
     </Formik>

@@ -1,4 +1,4 @@
-import { ProjectModel } from "./Project"
+import { ProjectModel } from './Project'
 
 export interface LogModel {
   description: string
@@ -10,6 +10,7 @@ export interface LogModel {
   userId: string
   id: string
 }
+
 export interface CreateLogModel {
   description: string
   difference: string

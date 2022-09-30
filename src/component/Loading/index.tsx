@@ -1,6 +1,6 @@
 import React from 'react'
-import {Blocks} from "react-loader-spinner"
-import "./Loading.css"
+import { Blocks } from 'react-loader-spinner'
+import './Loading.css'
 
 function Loading() {
   return (

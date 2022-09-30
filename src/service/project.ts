@@ -2,16 +2,16 @@ import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, 
 import { db } from '../firebase'
 import { CreateProjectModel, ProjectModel, UpdateProjectModel } from '../model/Project'
 
-
-export const getProject = async (id:string):Promise<ProjectModel> => {
-  const ref = doc(db, "projects", id )
+export const getProject = async (id: string): Promise<ProjectModel> => {
+  const ref = doc(db, 'projects', id)
   const project = await getDoc(ref)
   const data = project.data()
-  const res:ProjectModel = {
-    name: data!.name,
-    userId: data!.userId,
-    id: id
+  const res: ProjectModel = {
+    name: data?.name,
+    userId: data?.userId,
+    id: id,
   }
+
   return res
 }
 
@@ -46,4 +46,3 @@ export const updateProject = async (id: string, project: UpdateProjectModel) => 
   const editedProject = await updateDoc(ref, { ...project })
   return editedProject
 }
-

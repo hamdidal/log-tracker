@@ -1,15 +1,14 @@
 import React, { useContext } from 'react'
 import ProjectHeader from '../../component/ProjectHeader'
 import ProjectList from '../../component/ProjectList'
-import { GlobalContext } from "../../context"
+import { GlobalContext } from '../../context'
 
 const ProjectPage = () => {
-
-  const globalContext = useContext(GlobalContext);
+  const { user } = useContext(GlobalContext)
   return (
     <div>
-      <ProjectHeader/>
-      { globalContext.user && <ProjectList user={globalContext.user}/> }
+      <ProjectHeader />
+      {user && <ProjectList user={user} />}
     </div>
   )
 }

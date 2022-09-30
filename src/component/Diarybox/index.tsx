@@ -51,12 +51,11 @@ export const DiaryBox = () => {
   const handleTimeChange = (values: any) => {
     const startDate = new Date(values[0]._d)
     const endDate = new Date(values[1]._d)
-
     const diff = endDate.getTime() - startDate.getTime()
     const diffHrs = Math.floor((diff % 86400000) / 3600000)
     const diffMins = Math.floor(((diff % 86400000) % 3600000) / 60000)
-    setDifference(`${diffHrs}:${diffMins}`)
 
+    setDifference(`${diffHrs}:${diffMins}`)
     setStart(startDate.toLocaleString())
     setEnd(endDate.toLocaleString())
   }
