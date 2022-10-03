@@ -1,6 +1,4 @@
-import { CloseCircleFilled, PlusCircleFilled } from '@ant-design/icons'
-import { Select, Button, TimePicker } from 'antd'
-import TextArea from 'antd/lib/input/TextArea'
+import { Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +8,7 @@ import { getProjectsForUserId } from '../../service/project'
 import './DiaryBox.css'
 import { ProjectModel } from '../../model/Project'
 import { CreateLogModel } from '../../model/Log'
+import LogDiary from '../LogDiary'
 
 export const DiaryBox = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
@@ -81,27 +80,12 @@ export const DiaryBox = () => {
           </Option>
         ))}
       </Select>
-      <div className="description-diary">
-        <h3 className="title-form">Description</h3>
-        <TextArea
-          className="description-input"
-          placeholder="Please say something"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          maxLength={500}
-        />
-      </div>
-      <div className="description-diary">
-        <h3 className="title-form">Start Time</h3>
-        <TimePicker.RangePicker className="time-diary" onChange={handleTimeChange} />
-        {difference && <h3>Difference: {difference}</h3>}
-      </div>
-      <Button className="description-button" disabled={description.length < 1 && difference.length < 1} type="primary" htmlType="submit">
-        <PlusCircleFilled />
-      </Button>
-      <Button className="cancel-button" disabled={description.length > 1} type="primary" onClick={toCancel}>
-        <CloseCircleFilled />
-      </Button>
+      <LogDiary
+        description={description}
+        setDescription={setDescription}
+        difference={difference}
+        handleTimeChange={handleTimeChange}
+        toCancel={toCancel} />
     </form>
   )
 }

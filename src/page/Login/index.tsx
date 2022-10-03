@@ -7,6 +7,7 @@ import { Formik } from 'formik'
 import * as YUP from 'yup'
 import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../context'
+import Loading from '../../component/Loading'
 
 const initialValues = {
   email: '',
@@ -63,7 +64,7 @@ const Login = () => {
         <Form className="loginform" {...layout}>
           <div className="titles-top">Log Tracker</div>
           <div className="titles-top">Login</div>
-          {/* {loading && <Loading />} */}
+          {loading && <Loading />}
           <Form.Item validateStatus={errors.email && touched.email ? 'error' : 'success'}>
             <Input className="email" type="email" name="email" placeholder="Email Address" onChange={handleChange} onBlur={handleBlur} />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}

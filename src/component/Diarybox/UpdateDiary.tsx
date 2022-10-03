@@ -1,6 +1,3 @@
-import { CloseCircleFilled, DeleteOutlined, PlusCircleFilled } from '@ant-design/icons'
-import { Select, Button, TimePicker } from 'antd'
-import TextArea from 'antd/lib/input/TextArea'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -10,6 +7,8 @@ import { getProjectsForUserId } from '../../service/project'
 import './DiaryBox.css'
 import { ProjectModel } from '../../model/Project'
 import { UpdateLogModel } from '../../model/Log'
+import { Select } from 'antd'
+import UpdateLogDiary from '../UpdateLog'
 
 export const UpdateDiary = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
@@ -109,24 +108,14 @@ export const UpdateDiary = () => {
           </Option>
         ))}
       </Select>
-      <div className="description-diary">
-        <h3 className="title-form">Description</h3>
-        <TextArea className="description-input" placeholder="" onChange={(e) => setDescription(e.target.value)} value={description} maxLength={500} />
-      </div>
-      <div className="description-diary">
-        <h3 className="title-form">Start Time</h3>
-        <TimePicker.RangePicker className="time-diary" onChange={handleTimeChange} />
-        {difference && <h3>Difference: {difference}</h3>}
-      </div>
-      <Button className="description-button" disabled={description.length < 1} type="primary" htmlType="submit">
-        <PlusCircleFilled />
-      </Button>
-      <Button className="delete-button" disabled={description.length < 1} type="primary" onClick={onDelete}>
-        <DeleteOutlined />
-      </Button>
-      <Button className="cancel-button" type="primary" onClick={toCancel}>
-        <CloseCircleFilled />
-      </Button>
+      <UpdateLogDiary
+      description={description}
+      setDescription={setDescription}
+      difference={difference}
+      handleTimeChange={handleTimeChange}
+      onDelete={onDelete}
+      toCancel={toCancel}
+      />
     </form>
   )
 }
