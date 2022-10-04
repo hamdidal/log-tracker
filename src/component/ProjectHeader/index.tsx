@@ -14,7 +14,10 @@ function ProjectHeader() {
 
   return (
     <div>
-      <PageHeader className="site-page-header-ghost-wrapper" extra={[<HomeOutlined className="out-home" onClick={onPressToHome}></HomeOutlined>]}>
+      <PageHeader
+        className="site-page-header-ghost-wrapper"
+        extra={[<HomeOutlined className="out-home" onClick={onPressToHome}></HomeOutlined>]}
+      >
         <p className="paragraph">Projects </p>
       </PageHeader>
     </div>

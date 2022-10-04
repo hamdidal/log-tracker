@@ -1,9 +1,9 @@
-import { Button, Form, notification } from 'antd'
+import { Form, notification } from 'antd'
 import React, { useState } from 'react'
 import './Register.css'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../../service/auth'
-import { Formik, Field } from 'formik'
+import { Formik } from 'formik'
 import * as YUP from 'yup'
 import Loading from '../../component/Loading'
 
@@ -52,17 +52,29 @@ const Register: React.FC = () => {
     }
   }
   return (
-    <Formik initialValues={initialValues} onSubmit={onPressRegister} validationSchema={validationSchema} validateOnMount={true}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onPressRegister}
+      validationSchema={validationSchema}
+      validateOnMount={true}
+    >
       {({ errors, touched, handleChange, handleSubmit, handleBlur }) => (
         <Form className="loginform-reg" {...layout}>
-          <div>Register Form</div>
+          <div className="reg-title">Register Form</div>
           {loading && <Loading />}
           <Form.Item validateStatus={errors.email && touched.email ? 'error' : 'success'}>
-            <Field className="email-reg" type="email" name="email" placeholder="Enter Email Address" onChange={handleChange} onBlur={handleBlur} />
+            <input
+              className="email-reg"
+              type="email"
+              name="email"
+              placeholder="Enter Email Address"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </Form.Item>
           <Form.Item validateStatus={errors.password && touched.password ? 'error' : 'success'}>
-            <Field
+            <input
               className="password-reg"
               autoComplete="new-password"
               type="password"
@@ -73,10 +85,10 @@ const Register: React.FC = () => {
             />
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
           </Form.Item>
-          <Form.Item className="btn-form-reg">
-            <Button className="btn-reg" color="primary" block onClick={() => handleSubmit()}>
+          <Form.Item>
+            <button className="btn-reg" onClick={() => handleSubmit()}>
               Sign In
-            </Button>
+            </button>
           </Form.Item>
           <div className="back-log" onClick={toLoginPage}>
             If you have an account, please Login!

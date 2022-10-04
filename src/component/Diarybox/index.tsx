@@ -71,7 +71,7 @@ export const DiaryBox = () => {
 
   return (
     <form onSubmit={handleSubmit} className="form-diary">
-      <h2 className="title-form-diary">Add Diary</h2>
+      <h2 className="title-form-diary">Add Log</h2>
       <h3 className="title-form">Project Name</h3>
       <Select onChange={handleChange} placeholder="Select your project" className="select-modal">
         {projects.map((doc) => (
@@ -85,7 +85,8 @@ export const DiaryBox = () => {
         setDescription={setDescription}
         difference={difference}
         handleTimeChange={handleTimeChange}
-        toCancel={toCancel} />
+        toCancel={toCancel}
+      />
     </form>
   )
 }

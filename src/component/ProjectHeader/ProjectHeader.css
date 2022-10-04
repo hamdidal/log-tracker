@@ -5,20 +5,13 @@
     height: 100px;
 }
 
-.dropdown{
-    position: fixed;
-    left: 10%;
-    border-radius: 5px;
-    top: 40px;
-    font-size: medium;
-}
-
 .paragraph{
     font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -40px;
+    font-weight: bold;
 }
 
 .plus{

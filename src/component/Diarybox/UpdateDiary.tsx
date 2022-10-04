@@ -99,7 +99,7 @@ export const UpdateDiary = () => {
   }
   return (
     <form onSubmit={handleSubmit} className="form-diary">
-      <h2 className="title-form-diary">Update Diary</h2>
+      <h2 className="title-form-diary">Update Log</h2>
       <h3 className="title-form">Project Name</h3>
       <Select value={projectId} onChange={handleChange} placeholder="Select your project" className="select-modal">
         {projects.map((doc) => (
@@ -109,12 +109,12 @@ export const UpdateDiary = () => {
         ))}
       </Select>
       <UpdateLogDiary
-      description={description}
-      setDescription={setDescription}
-      difference={difference}
-      handleTimeChange={handleTimeChange}
-      onDelete={onDelete}
-      toCancel={toCancel}
+        description={description}
+        setDescription={setDescription}
+        difference={difference}
+        handleTimeChange={handleTimeChange}
+        onDelete={onDelete}
+        toCancel={toCancel}
       />
     </form>
   )

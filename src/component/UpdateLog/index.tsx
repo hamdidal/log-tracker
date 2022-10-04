@@ -1,4 +1,4 @@
-import { CloseCircleFilled, DeleteOutlined, PlusCircleFilled } from '@ant-design/icons'
+import { CheckOutlined, CloseOutlined, DeleteOutlined } from '@ant-design/icons'
 import { Button, TimePicker } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
 import { FC } from 'react'
@@ -36,15 +36,17 @@ const UpdateLogDiary: FC<UpdateLogsProps> = ({
         <TimePicker.RangePicker className="time-diary" onChange={handleTimeChange} />
         {difference && <h3>Difference: {difference}</h3>}
       </div>
-      <Button className="description-button" disabled={description.length < 1} type="primary" htmlType="submit">
-        <PlusCircleFilled />
-      </Button>
-      <Button className="delete-button" disabled={description.length < 1} type="primary" onClick={onDelete}>
-        <DeleteOutlined />
-      </Button>
-      <Button className="cancel-button" type="primary" onClick={toCancel}>
-        <CloseCircleFilled />
-      </Button>
+      <div className="buttons">
+        <Button className="description-button" disabled={description.length < 1} htmlType="submit">
+          <CheckOutlined />
+        </Button>
+        <Button className="delete-button" type="ghost" disabled={description.length < 1} onClick={onDelete}>
+          <DeleteOutlined />
+        </Button>
+        <Button className="cancel-button" type="primary" onClick={toCancel}>
+          <CloseOutlined />
+        </Button>
+      </div>
     </div>
   )
 }

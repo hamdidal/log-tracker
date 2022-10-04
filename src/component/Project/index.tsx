@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Button, Card, Input } from 'antd'
+import { Button, Card } from 'antd'
 import { ProjectModel } from '../../model/Project'
 
 interface ProjectProps {
@@ -13,10 +13,16 @@ interface ProjectProps {
 
 const Project: FC<ProjectProps> = ({ project, onChange, onUpdate, onDelete, onEdit, onEditMode }) => {
   return (
-    <Card.Grid title="" className="projects">
+    <Card.Grid className="projects">
       <div className="project">
         {onEditMode ? (
-          <Input bordered={false} value={project.name} placeholder={project.name} type="text" onChange={(e) => onChange(e.target.value)} />
+          <input
+            className="edit-mode"
+            value={project.name}
+            placeholder={project.name}
+            type="text"
+            onChange={(e) => onChange(e.target.value)}
+          />
         ) : (
           <div>{project.name}</div>
         )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Input } from 'antd'
-import { PlusCircleFilled } from '@ant-design/icons'
+import { Button } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 import './ProjectList.css'
 import { createProject, deleteProject, getProjectsForUserId, updateProject } from '../../service/project'
 import { GlobalContext } from '../../context'
@@ -73,15 +73,14 @@ function ProjectList(props: Props) {
   return (
     <div className="project-list">
       <form onSubmit={handleSubmit} className="add-form">
-        <Input
+        <input
           placeholder="Add Project"
-          bordered={true}
           type="text"
           onChange={(e) => setProjectName(e.target.value)}
           value={projectName}
           className="input-form"
         />
-        <Button className="btn" disabled={projectName.length < 1} type="primary" icon={<PlusCircleFilled />} htmlType="submit" />
+        <Button className="btn" disabled={projectName.length < 1} icon={<PlusOutlined />} htmlType="submit" />
       </form>
       {loading && <Loading />}
       {projects.map((project, index) => (

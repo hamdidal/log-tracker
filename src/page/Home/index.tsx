@@ -1,6 +1,7 @@
+import { PlusOutlined } from '@ant-design/icons'
 import { Card } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../component/Header'
 import Loading from '../../component/Loading'
 import { GlobalContext } from '../../context'
@@ -29,11 +30,22 @@ export const Home = () => {
   const toUpdate = (id: string) => {
     navigate('/updatediary/' + id)
   }
+  const navigateModalPage = () => {
+    navigate('/adddiary')
+  }
 
   return (
     <div className="home-page">
       {loading && <Loading />}
       <Header />
+      <div className="plus" onClick={navigateModalPage}>
+        <PlusOutlined className="plus-but" /> <p className="add-p">Add Log</p>{' '}
+      </div>
+      <div className="top-bar">
+          <Link to="/Projects" className="p1">
+            Projects
+          </Link>
+        </div>
       <div className="container">
         <div className="titles">
           <div className="title">Project</div>

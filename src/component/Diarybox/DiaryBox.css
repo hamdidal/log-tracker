@@ -6,8 +6,8 @@
     top: 10%;
     background-color: rgb(240, 235, 235);
     box-shadow: 0px 0px 41px -7px rgba(0,0,0,0.75);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 5px 5px gray;
 }
 
 .title-form-diary{
@@ -15,10 +15,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(255, 186, 186);
+    background-color: rgba(245, 222, 179, 0.308);
     margin-bottom: 10vh;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 5px 5px gray;
+    font-weight: bold;
 }
 
 .select-modal{
@@ -26,7 +27,12 @@
     background-color: black;
     color: black;
     margin-bottom: 20px;
-    border-radius: 4px;
+    border: 1px solid black;
+}
+
+.select-modal:focus{
+    box-shadow: 5px 5px gray;
+
 }
 
 .description-diary{
@@ -40,25 +46,48 @@
 .description-input{
     border: 1px solid;
     width: 70%;
-    background-color: rgba(245, 222, 179, 0.308);
+    background-color: rgb(236, 233, 228);
     height: 100px;
-    border-radius: 4px;
+    border: 1px solid black;
 }
 
 .description-input:focus{
     background-color: white;
+    box-shadow: 5px 5px gray;
 }
 
+.time-diary{
+    border: 1px solid black;
+}
+
+.time-diary:focus{
+    box-shadow: 5px 5px gray;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .description-button{
     font-size: 18px;
     width: 3vw;
     height: 3.5vh;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 10%;
     justify-content: center;
     flex-direction: column;
-    border-radius: 4px;
     margin: 10%;
+    color: white;
+    background-color: #16A085;
+    border: 2px solid black;
+    box-shadow: 5px 5px gray;
+}
+
+.description-button:hover{
+    background-color: #16a07a;
+    border: 0;
+    color: white;
 }
 
 .cancel-button{
@@ -66,11 +95,12 @@
     width: 3vw;
     height: 3.5vh;
     align-items: center;
-    margin-top: 20%;
+    margin-bottom: 30px;
     justify-content: center;
     flex-direction: column;
-    border-radius: 4px;
     margin: 10%;
+    border: 2px solid black;
+    box-shadow: 5px 5px gray;
 }
 
 .delete-button{
@@ -78,20 +108,29 @@
     width: 3vw;
     height: 3.5vh;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 10%;
     justify-content: center;
     flex-direction: column;
-    border-radius: 4px;
     margin: 10%;
+    color: white;
+    background-color: #E74C3C;
+    border: 2px solid black;
+    box-shadow: 5px 5px gray;
 }
+
+.delete-button:hover{
+    background-color: #e74c3c;
+    color: white;
+    border: 0;
+}
+
 
 .title-form{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(209, 209, 209);
+    background-color: rgba(245, 222, 179, 0.308);
     width: 40%;
     margin-left: 30%;
     margin-top: 5vh;
-    border-radius: 4px;
 }

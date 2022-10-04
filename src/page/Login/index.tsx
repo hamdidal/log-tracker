@@ -1,4 +1,4 @@
-import { Button, Form, Input, notification } from 'antd'
+import { Form, notification } from 'antd'
 import React, { useState, useContext } from 'react'
 import 'antd/dist/antd.min.css'
 import './Login.css'
@@ -59,32 +59,43 @@ const Login = () => {
     }
   }
   return (
-    <Formik initialValues={initialValues} onSubmit={onPressLogin} validationSchema={validationSchema} validateOnChange={true}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onPressLogin}
+      validationSchema={validationSchema}
+      validateOnChange={true}
+    >
       {({ errors, touched, handleChange, handleSubmit, handleBlur }) => (
         <Form className="loginform" {...layout}>
-          <div className="titles-top">Log Tracker</div>
-          <div className="titles-top">Login</div>
+          <div className="log-title">Log Tracker Login</div>
           {loading && <Loading />}
           <Form.Item validateStatus={errors.email && touched.email ? 'error' : 'success'}>
-            <Input className="email" type="email" name="email" placeholder="Email Address" onChange={handleChange} onBlur={handleBlur} />
+            <input
+              className="email"
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </Form.Item>
           <Form.Item validateStatus={errors.password && touched.password ? 'error' : 'success'}>
-            <Input
+            <input
               className="password"
               autoComplete="new-password"
               type="password"
               name="password"
-              placeholder="Enter Password"
+              placeholder="Password"
               onChange={handleChange}
               onBlur={handleBlur}
             />
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
           </Form.Item>
           <Form.Item className="button">
-            <Button color="primary" block onClick={() => handleSubmit()}>
+            <button className="login-but" onClick={() => handleSubmit()}>
               Login
-            </Button>
+            </button>
             <div className="register" onClick={toRegisterPage}>
               Don't have an account? Request now!
             </div>
