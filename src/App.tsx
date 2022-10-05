@@ -6,9 +6,9 @@ import Register from './page/Register'
 import ProjectPage from './page/ProjectPage'
 import { Home } from './page/Home'
 import { GlobalContextProvider } from './context'
-import { DiaryBox } from './component/Diarybox'
+import { DiaryBox } from './page/Diarybox'
 import Auth from './component/Auth/auth'
-import { UpdateDiary } from './component/Diarybox/UpdateDiary'
+import { UpdateDiary } from './page/Diarybox/UpdateDiary'
 
 function App() {
   return (

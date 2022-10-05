@@ -8,7 +8,8 @@ import { getProjectsForUserId } from '../../service/project'
 import './DiaryBox.css'
 import { ProjectModel } from '../../model/Project'
 import { CreateLogModel } from '../../model/Log'
-import LogDiary from '../LogDiary'
+import LogDiary from '../../component/LogDiary'
+import Header from '../../component/Header'
 
 export const DiaryBox = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
@@ -70,23 +71,26 @@ export const DiaryBox = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-diary">
-      <h2 className="title-form-diary">Add Log</h2>
-      <h3 className="title-form">Project Name</h3>
-      <Select onChange={handleChange} placeholder="Select your project" className="select-modal">
-        {projects.map((doc) => (
-          <Option key={doc.id} value={doc.id}>
-            {doc.name}
-          </Option>
-        ))}
-      </Select>
-      <LogDiary
-        description={description}
-        setDescription={setDescription}
-        difference={difference}
-        handleTimeChange={handleTimeChange}
-        toCancel={toCancel}
-      />
-    </form>
+    <>
+      <Header />
+      <form onSubmit={handleSubmit} className="form-diary">
+        <h2 className="title-form-diary">Add Log</h2>
+        <h3 className="title-form">Project Name</h3>
+        <Select onChange={handleChange} placeholder="Select your project" className="select-modal">
+          {projects.map((doc) => (
+            <Option key={doc.id} value={doc.id}>
+              {doc.name}
+            </Option>
+          ))}
+        </Select>
+        <LogDiary
+          description={description}
+          setDescription={setDescription}
+          difference={difference}
+          handleTimeChange={handleTimeChange}
+          toCancel={toCancel}
+        />
+      </form>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import ProjectHeader from '../../component/ProjectHeader'
+import Header from '../../component/Header'
 import ProjectList from '../../component/ProjectList'
 import { GlobalContext } from '../../context'
 
@@ -7,7 +7,7 @@ const ProjectPage = () => {
   const { user } = useContext(GlobalContext)
   return (
     <div>
-      <ProjectHeader />
+      <Header />
       {user && <ProjectList user={user} />}
     </div>
   )

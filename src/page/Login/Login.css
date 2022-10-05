@@ -51,6 +51,7 @@
 
 .login-but:hover{
     background-color: white;
+    cursor: pointer;
 }
 
 
