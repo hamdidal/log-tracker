@@ -10,6 +10,7 @@ import { UpdateLogModel } from '../../model/Log'
 import { Select } from 'antd'
 import UpdateLogDiary from '../../component/UpdateLog'
 import Header from '../../component/Header'
+import Loading from '../../component/Loading'
 
 export const UpdateDiary = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
@@ -20,7 +21,6 @@ export const UpdateDiary = () => {
   const [projectId, setProjectId] = useState('')
   const globalContext = useContext(GlobalContext)
   const [loading, setLoading] = useState(false)
-  const [selectedLogId, setSelectedLogId] = useState<string | null>(null)
 
   const { id } = useParams()
 
@@ -61,8 +61,8 @@ export const UpdateDiary = () => {
       setEnd(data.end)
       setProjectId(data.projectId)
       setStart(data.start)
+      setLoading(false)
     })
-    setLoading(false)
   }, [id])
 
   const { Option } = Select
@@ -93,7 +93,6 @@ export const UpdateDiary = () => {
       const deletedLog = id
       if (deletedLog) {
         await deleteLog(deletedLog)
-        setSelectedLogId('')
         navigate('/')
       }
     } catch (error) {}
@@ -101,6 +100,7 @@ export const UpdateDiary = () => {
   return (
     <>
       <Header />
+      {loading && <Loading/>}
       <form onSubmit={handleSubmit} className="form-diary">
         <h2 className="title-form-diary">Update Log</h2>
         <h3 className="title-form">Project Name</h3>

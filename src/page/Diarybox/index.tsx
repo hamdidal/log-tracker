@@ -10,6 +10,7 @@ import { ProjectModel } from '../../model/Project'
 import { CreateLogModel } from '../../model/Log'
 import LogDiary from '../../component/LogDiary'
 import Header from '../../component/Header'
+import Loading from '../../component/Loading'
 
 export const DiaryBox = () => {
   const [projects, setProjects] = useState<ProjectModel[]>([])
@@ -73,6 +74,7 @@ export const DiaryBox = () => {
   return (
     <>
       <Header />
+      {loading && <Loading />}
       <form onSubmit={handleSubmit} className="form-diary">
         <h2 className="title-form-diary">Add Log</h2>
         <h3 className="title-form">Project Name</h3>
