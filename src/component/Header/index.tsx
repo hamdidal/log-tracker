@@ -6,6 +6,10 @@ import { logout } from '../../service/auth'
 
 function Header() {
   const navigate = useNavigate()
+  
+  const toHome = async (values: any) => {
+      navigate('/')
+  }
 
   const onPressLogOut = async (values: any) => {
     try {
@@ -22,7 +26,7 @@ function Header() {
         className="site-page-header-ghost-wrapper"
         extra={[
           <>
-            <Link className="p" to="/" >LogDiary </Link>
+            <p onClick={toHome} className="p">LogDiary </p>
             <LogoutOutlined onClick={onPressLogOut} rotate={270} className="logOut-btn"></LogoutOutlined>
           </>
         ]}
