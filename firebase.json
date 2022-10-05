@@ -8,11 +8,7 @@
     ],
     "rewrites": [
       {
-        "source": "",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/templates//.*",
+        "source": "**",
         "destination": "/index.html"
       }
     ]
