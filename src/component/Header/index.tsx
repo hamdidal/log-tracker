@@ -1,7 +1,7 @@
 import { LogoutOutlined } from '@ant-design/icons'
 import { PageHeader } from 'antd'
 import './Header.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { logout } from '../../service/auth'
 
 function Header() {
