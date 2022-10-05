@@ -1,4 +1,5 @@
 .site-page-header-ghost-wrapper{
+    height: 100px;
     padding: 24px;
     background-color: #FF6600;
     border: 2px solid black;
@@ -13,6 +14,10 @@
     left: 8%;
     top: 30px;
     color: white;
+}
+
+.p:hover{
+    cursor: pointer;
 }
 
 .modal{

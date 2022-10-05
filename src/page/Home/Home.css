@@ -16,8 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 120px;
-    left: 9%;
+    margin-top: 20px;
+    margin-left: 9%;
     width: 150px;
     height: 40px;
     color: black;
@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: -40px;
     margin-left: 80.8%;
     width: 150px;
     height: 40px;
